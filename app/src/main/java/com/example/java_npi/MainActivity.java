@@ -18,6 +18,8 @@ import java.sql.SQLOutput;
 public class MainActivity extends AppCompatActivity {
 
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
+    public static String user = "";
+    public static String pass = "";
 
     EditText username;
     EditText password;
@@ -38,14 +40,14 @@ public class MainActivity extends AppCompatActivity {
         loginBton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String usrName = String.valueOf(username.getText());
-                String pass = String.valueOf(password.getText());
 
-                //Toast.makeText(getApplicationContext(), usrName, Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(getApplicationContext(), LoggedActivity.class);
-                intent.putExtra(EXTRA_MESSAGE, usrName+"@"+pass);
+                MainActivity.user = String.valueOf(username.getText());
+                MainActivity.pass = String.valueOf(password.getText());
+
+                Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
 
                 startActivity(intent);
+
             }
         });
 
