@@ -11,12 +11,15 @@ public class MenuActivity extends AppCompatActivity {
 
     LinearLayout qrOption;
 
+    LinearLayout locationsOption;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_layout);
 
         qrOption = (LinearLayout) findViewById(R.id.qr_option);
+        locationsOption = (LinearLayout) findViewById(R.id.locations_option);
 
 
         qrOption.setOnClickListener(new View.OnClickListener() {
@@ -28,6 +31,14 @@ public class MenuActivity extends AppCompatActivity {
 
                 startActivity(intent);
 
+            }
+        });
+
+        locationsOption.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Locations.class);
+                startActivity(intent);
             }
         });
 
