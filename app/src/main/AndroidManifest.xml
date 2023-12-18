@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,6 +15,12 @@
         android:theme="@style/Theme.Java_NPI"
         tools:targetApi="31">
         <activity
+            android:name=".Becas"
+            android:exported="true" />
+        <activity
+            android:name=".Administration"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -23,16 +31,13 @@
         </activity>
         <activity
             android:name=".LoggedActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".Locations"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".MenuActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
     </application>
 
 </manifest>

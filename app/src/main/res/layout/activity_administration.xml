@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".Administration">
+
 
     <ScrollView
         android:layout_width="match_parent"
@@ -16,11 +19,11 @@
 
             <!-- Opción 1 -->
             <LinearLayout
-                android:id="@+id/qr_option"
+                android:id="@+id/becas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="16dp"
+                android:padding="36dp"
                 android:layout_margin="16dp"
                 android:background="@color/white">
 
@@ -34,17 +37,17 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="14dp"
-                    android:text="Mostrar mi QR"
-                    android:textSize="20sp"
+                    android:text="Becas"
+                    android:textSize="30sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/locations_option"
+                android:id="@+id/movilidad"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="16dp"
+                android:padding="36dp"
                 android:layout_margin="16dp"
                 android:background="@color/white">
 
@@ -58,37 +61,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="14dp"
-                    android:text="Localizaciones principales"
-                    android:textSize="20sp"
+                    android:text="Movilidad internacional"
+                    android:textSize="25sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/administration"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="16dp"
-                android:layout_margin="16dp"
-                android:background="@color/white">
-
-                <ImageView
-                    android:layout_width="62dp"
-                    android:layout_height="62dp"
-                    android:src="@drawable/locations_icon" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="14dp"
-                    android:text="Administracion"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>
