@@ -13,11 +13,15 @@ public class Administration extends  AppCompatActivity{
 
     LinearLayout becasOption;
     LinearLayout movilidadOption;
+    LinearLayout oficinaOption;
+    LinearLayout sedeOption;
 
     WebView web;
     WebSettings webSettings;
     boolean onTheWeb = false;
     String movilidad_url = "https://internacional.ugr.es/pages/movilidad";
+    String sedeUGR_url = "https://sede.ugr.es/";
+    String oficina_url = "https://oficinavirtual.ugr.es/ai/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +31,10 @@ public class Administration extends  AppCompatActivity{
 
         becasOption = (LinearLayout) findViewById(R.id.becas);
         movilidadOption = (LinearLayout) findViewById(R.id.movilidad);
+        sedeOption = (LinearLayout) findViewById(R.id.sede_electronica);
+        oficinaOption = (LinearLayout) findViewById(R.id.oficina_virtual);
+
+
         // cargar la clase web
         web = new WebView(getApplicationContext());
         //para visualizar la web sin problemas
@@ -47,6 +55,24 @@ public class Administration extends  AppCompatActivity{
                 onTheWeb = true;
                 setContentView(web);
                 web.loadUrl(movilidad_url);
+            }
+        });
+
+        sedeOption.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onTheWeb = true;
+                setContentView(web);
+                web.loadUrl(sedeUGR_url);
+            }
+        });
+
+        oficinaOption.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onTheWeb = true;
+                setContentView(web);
+                web.loadUrl(oficina_url);
             }
         });
 
