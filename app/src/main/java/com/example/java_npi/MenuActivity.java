@@ -15,6 +15,7 @@ public class MenuActivity extends AppCompatActivity {
 
 
     LinearLayout administration;
+    LinearLayout brujula;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,7 @@ public class MenuActivity extends AppCompatActivity {
         qrOption = (LinearLayout) findViewById(R.id.qr_option);
         locationsOption = (LinearLayout) findViewById(R.id.locations_option);
         administration = (LinearLayout) findViewById(R.id.administration);
+        brujula = (LinearLayout) findViewById(R.id.brujula);
 
 
         qrOption.setOnClickListener(new View.OnClickListener() {
@@ -51,6 +53,14 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), Administration.class);
+                startActivity(intent);
+            }
+        });
+
+        brujula.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), CompassActivity.class);
                 startActivity(intent);
             }
         });

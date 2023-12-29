@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Estás mirando hacia:"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"/>
+
+    <TextView
+        android:id="@+id/edificioTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/titleTextView"
+        android:layout_marginTop="8dp"
+        android:text=""
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"/>
+
+    <ImageView
+        android:id="@+id/planoImageView"
+        android:layout_width="match_parent"
+        android:layout_height="621dp"
+        android:layout_above="@+id/brujulaImageView"
+        android:layout_below="@id/edificioTextView"
+        android:layout_marginTop="-2dp"
+        android:layout_marginBottom="-372dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/conserjeria" />
+
+    <ImageView
+        android:id="@+id/brujulaImageView"
+        android:layout_width="102dp"
+        android:layout_height="93dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/arrow" />
+
+</RelativeLayout>
