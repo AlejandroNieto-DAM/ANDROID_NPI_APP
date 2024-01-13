@@ -71,35 +71,43 @@ public class CarouselItemFragment extends Fragment {
                     case "CAFETERÍA":
                         Locations.selectedSite = "CAFETERÍA";
                         Nodo poste = new Nodo();
-                        poste.x = 37.18576407755739;
-                        poste.y = -3.602952272146702;
+                        poste.x = 37.19110857873402;
+                        poste.y = -3.609295916039702;
                         poste.padre = null;
-                        poste.info = "Por aqui andamos";
+                        poste.info = "Sigue hasta la esquina de la calle";
 
 
                         Nodo sigPoste = new Nodo();
-                        sigPoste.x =  37.18586919111526;
-                        sigPoste.y = -3.602767556754583;
+                        sigPoste.x =  37.19119233679828;
+                        sigPoste.y = -3.609489471737808;
                         sigPoste.padre = poste;
-                        sigPoste.info = "Cunado pases eso le das";
-
+                        sigPoste.info = "Sigue andando hasta que te encuentres con un semaforo";
 
                         Nodo izq = new Nodo();
-                        izq.x = 37.18613547814048;
-                        izq.y = -3.6030050479730225;
+                        izq.x = 37.19059746216378;
+                        izq.y = -3.6103855629840336;
                         izq.padre = sigPoste;
-                        izq.info = "Entrando por la puerta verdad?";
+                        izq.info = "Cruza el paso de cebra";
+
 
                         Nodo der = new Nodo();
-                        der.x = 37.18546275121396;
-                        der.y = -3.602420115897977;
+                        der.x =  37.190646004109084;
+                        der.y = -3.610485925197867;
                         der.padre = izq;
-                        der.info = "Final!!";
+                        der.info = "Sigue hacia el gimnasio";
+
+                        Nodo der2 = new Nodo();
+                        der.x =  37.19068217259672;
+                        der.y = -3.6110211903578473;
+                        der.padre = izq;
+                        der.info = "Sigue hacia el gimnasio";
 
                         Locations.generarCamino.add(poste);
                         Locations.generarCamino.add(sigPoste);
                         Locations.generarCamino.add(izq);
                         Locations.generarCamino.add(der);
+                        Locations.generarCamino.add(der2);
+
                         break;
                     case "BIBLIOTECA":
                         Locations.selectedSite = "BIBLIOTECA";

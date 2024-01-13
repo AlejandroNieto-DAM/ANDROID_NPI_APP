@@ -123,15 +123,23 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
         float[] rotationMatrix = new float[9];
         float[] orientationValues = new float[3];
 
+
+
         if (SensorManager.getRotationMatrix(rotationMatrix, null, lastAccelerometer, lastMagnetometer)) {
             SensorManager.getOrientation(rotationMatrix, orientationValues);
 
             float azimuth = (float) Math.toDegrees(orientationValues[0]);
             azimuth = (azimuth + 360) % 360;
 
+            float newDegree;
+            if (anglePos > 0)
+                newDegree = (-azimuth - (int) anglePos) % 360;
+            if (anglePos < 0 )
+                newDegree = (-azimuth + (int) anglePos) % 360;
+
             RotateAnimation rotateAnimation = new RotateAnimation(
                     currentDegree,
-                    -azimuth,
+                    (-azimuth - (int) anglePos) % 360,
                     Animation.RELATIVE_TO_SELF, 0.5f,
                     Animation.RELATIVE_TO_SELF, 0.5f);
 
@@ -140,14 +148,7 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
 
             compassImageView.startAnimation(rotateAnimation);
 
-            if (anglePos > 0 && anglePos < 90)
-                currentDegree = (-azimuth - (int) anglePos) % 360;
-            if (anglePos > 90 && anglePos < 180)
-                currentDegree = (-azimuth + (int) anglePos) % 360;
-            if (anglePos > 180 && anglePos < 270)
-                currentDegree = (-azimuth - (int) anglePos) % 360;
-            if (anglePos > 270 && anglePos < 360)
-                currentDegree = (-azimuth + (int) anglePos) % 360;
+            currentDegree = (-azimuth - (int) anglePos) % 360;
 
             lastAzimuth = azimuth;
 

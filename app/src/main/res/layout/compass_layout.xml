@@ -3,8 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity"
-    >
+    android:background="@color/orange">
 
     <TextView
         android:id="@+id/titleTextView"
@@ -13,7 +14,7 @@
         android:layout_marginTop="16dp"
         android:text="Nos dirigimos a:"
         android:textSize="24sp"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:layout_centerHorizontal="true" />
 
     <TextView
@@ -27,7 +28,7 @@
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="5dp"
         android:text="sitio"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="24sp" />
 
     <ImageView
@@ -36,36 +37,52 @@
         android:layout_height="500dp"
         android:layout_below="@+id/siteText"
         android:scaleType="fitXY"
-        android:src="@drawable/conserjeria" />
+        android:src="@drawable/fondobrujula" />
 
     <ImageView
         android:id="@+id/brujulaImageView"
         android:layout_width="102dp"
         android:layout_height="93dp"
         android:layout_centerInParent="true"
-        android:src="@drawable/arrow" />
+        android:src="@drawable/dispositivogps" />
 
-    <TextView
-        android:id="@+id/infoTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/planoImageView"
-        android:layout_marginTop="16dp"
-        android:text="Tu información aquí"
-        android:textSize="17dp"
-        android:textColor="@color/black"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:id="@+id/btn_step"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/infoTextView"
-        android:layout_marginTop="16dp"
-        android:text="Siguiente paso"
-        android:textSize="20dp"
-        android:textColor="@color/otro_blanco"
-        android:layout_margin="25dp"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/planoImageView"
+        android:layout_marginTop="-50dp"
+        app:cardCornerRadius="25dp"
+        android:textAlignment="center"
+        >
+
+        <TextView
+            android:id="@+id/infoTextView"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Tu información aquí"
+            android:textSize="17dp"
+            android:layout_marginBottom="25dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="25dp"
+            android:textColor="@color/black"
+
+             />
+
+        <Button
+
+            android:id="@+id/btn_step"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:layout_marginBottom="25dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:text="Siguiente paso"
+            android:textColor="@color/otro_blanco"
+            android:textSize="20dp" />
+
+    </androidx.cardview.widget.CardView>
+
 
 </RelativeLayout>
