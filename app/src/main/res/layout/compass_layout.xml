@@ -3,40 +3,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    >
 
     <TextView
         android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Estás mirando hacia:"
-        android:textSize="18sp"
-        android:textColor="#000000"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"/>
+        android:text="Nos dirigimos a:"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:layout_centerHorizontal="true" />
 
     <TextView
-        android:id="@+id/edificioTextView"
+        android:id="@+id/siteText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/titleTextView"
-        android:layout_marginTop="8dp"
-        android:text=""
-        android:textSize="18sp"
-        android:textColor="#000000"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"/>
+        android:layout_below="@+id/titleTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:text="sitio"
+        android:textColor="@color/black"
+        android:textSize="24sp" />
 
     <ImageView
         android:id="@+id/planoImageView"
         android:layout_width="match_parent"
-        android:layout_height="621dp"
-        android:layout_above="@+id/brujulaImageView"
-        android:layout_below="@id/edificioTextView"
-        android:layout_marginTop="-2dp"
-        android:layout_marginBottom="-372dp"
+        android:layout_height="500dp"
+        android:layout_below="@+id/siteText"
         android:scaleType="fitXY"
         android:src="@drawable/conserjeria" />
 
@@ -47,11 +45,27 @@
         android:layout_centerInParent="true"
         android:src="@drawable/arrow" />
 
+    <TextView
+        android:id="@+id/infoTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/planoImageView"
+        android:layout_marginTop="16dp"
+        android:text="Tu información aquí"
+        android:textSize="17dp"
+        android:textColor="@color/black"
+        android:layout_centerHorizontal="true" />
+
     <Button
+        android:id="@+id/btn_step"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Siguiente Punto"
-        android:id="@+id/btn_step"/>
-
+        android:layout_below="@id/infoTextView"
+        android:layout_marginTop="16dp"
+        android:text="Siguiente paso"
+        android:textSize="20dp"
+        android:textColor="@color/otro_blanco"
+        android:layout_margin="25dp"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

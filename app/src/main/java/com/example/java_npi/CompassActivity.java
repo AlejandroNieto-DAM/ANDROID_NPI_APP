@@ -34,6 +34,8 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
 
     private ImageView compassImageView;
     private TextView directionTextView;
+    private TextView site;
+
     private SensorManager sensorManager;
     private Sensor accelerometer;
     private Sensor magnetometer;
@@ -50,7 +52,7 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
     private static final float MIN_ANGLE_CHANGE = 5.0f;
     private float lastAzimuth = 0;
 
-    ArrayList<Nodo> caminoASeguir;
+    private ArrayList<Nodo> caminoASeguir;
     private int posCamino = 0;
 
     Button nextStep;
@@ -59,42 +61,16 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.compass_layout);
 
-        caminoASeguir = new ArrayList<Nodo>();
+        //caminoASeguir = new ArrayList<Nodo>();
 
+
+        site = findViewById(R.id.siteText);
+        site.setText(Locations.selectedSite);
         compassImageView = findViewById(R.id.brujulaImageView);
-        directionTextView = findViewById(R.id.edificioTextView);
+        directionTextView = findViewById(R.id.infoTextView);
         nextStep = findViewById(R.id.btn_step);
 
-        Nodo poste = new Nodo();
-        poste.x = 37.18576407755739;
-        poste.y = -3.602952272146702;
-        poste.padre = null;
-        poste.info = "Primero";
-
-
-        Nodo sigPoste = new Nodo();
-        sigPoste.x =  37.18586919111526;
-        sigPoste.y = -3.602767556754583;
-        sigPoste.padre = poste;
-        sigPoste.info = "Segundo";
-
-
-        Nodo izq = new Nodo();
-        izq.x = 37.18613547814048;
-        izq.y = -3.6030050479730225;
-        izq.padre = sigPoste;
-        izq.info = "Tercero";
-
-        Nodo der = new Nodo();
-        der.x = 37.18546275121396;
-        der.y = -3.602420115897977;
-        der.padre = izq;
-        der.info = "Final!!";
-
-        caminoASeguir.add(poste);
-        caminoASeguir.add(sigPoste);
-        caminoASeguir.add(izq);
-        caminoASeguir.add(der);
+        caminoASeguir = Locations.generarCamino;
 
         anglePos = calculateAngle(caminoASeguir.get(posCamino), caminoASeguir.get(posCamino + 1));
         directionTextView.setText(caminoASeguir.get(posCamino).info);
@@ -118,6 +94,8 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
                     posCamino+=1;
                     anglePos = calculateAngle(caminoASeguir.get(posCamino), caminoASeguir.get(posCamino + 1));
                     directionTextView.setText(caminoASeguir.get(posCamino).info);
+                } else if (posCamino == caminoASeguir.size() - 2) {
+                    directionTextView.setText(caminoASeguir.get(posCamino + 1).info);
                 }
             }
         });
@@ -161,7 +139,6 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
             rotateAnimation.setFillAfter(true);
 
             compassImageView.startAnimation(rotateAnimation);
-
 
             if (anglePos > 0 && anglePos < 90)
                 currentDegree = (-azimuth - (int) anglePos) % 360;

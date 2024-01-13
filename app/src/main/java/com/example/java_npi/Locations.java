@@ -10,10 +10,14 @@ import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Locations extends AppCompatActivity {
+
+    public static ArrayList<Nodo> generarCamino;
+    public static String selectedSite;
 
     private ViewPager2 viewPager;
     private CarouselAdapter carouselAdapter;
@@ -27,6 +31,8 @@ public class Locations extends AppCompatActivity {
         carouselAdapter = new CarouselAdapter(getSupportFragmentManager(), getLifecycle());
         viewPager.setAdapter(carouselAdapter);
 
+        generarCamino = new ArrayList<Nodo>();
+
         String infoCafeteria = "Ofrece un ambiente propicio para el descanso y la socialización, contribuyendo al bienestar de la comunidad universitaria en la Escuela Técnica Superior de Ingeniería Informática y de Telecomunicaciones.";
         String infoBiblioteca = "Es un recurso vital para estudiantes y profesionales. Ofrece una amplia colección de libros, revistas y recursos electrónicos, facilitando la investigación y el aprendizaje en disciplinas de tecnología de la información y telecomunicacione";
         String infoClases = "Están diseñadas para facilitar el aprendizaje en disciplinas de ingeniería informática y telecomunicaciones, ofreciendo un espacio propicio para la interacción y la enseñanza efectiva entre estudiantes y profesores.";
@@ -39,6 +45,8 @@ public class Locations extends AppCompatActivity {
         carouselAdapter.addFragment(CarouselItemFragment.newInstance(R.drawable.clasees, "CLASES", infoClases));
         carouselAdapter.addFragment(CarouselItemFragment.newInstance(R.drawable.comedor, "COMEDOR", infoComedor));
         carouselAdapter.addFragment(CarouselItemFragment.newInstance(R.drawable.conserjeria, "CONSERJERIA", infoConserjeria));
+        carouselAdapter.addFragment(CarouselItemFragment.newInstance(R.drawable.conserjeria, "LABORATORIOS", infoConserjeria));
+        carouselAdapter.addFragment(CarouselItemFragment.newInstance(R.drawable.conserjeria, "DESPACHOS", infoConserjeria));
 
     }
 
