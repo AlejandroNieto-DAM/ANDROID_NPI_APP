@@ -6,7 +6,8 @@
     android:columnCount="2"
     android:rowCount="2"
     android:alignmentMode="alignMargins"
-    android:columnOrderPreserved="false">
+    android:columnOrderPreserved="false"
+    android:background="@color/white">
 
     <!-- Opción 1 -->
     <LinearLayout
