@@ -66,6 +66,9 @@
         <activity
             android:name=".ReadNFCTag"
             android:exported="true" />
+        <activity
+            android:name=".HorarioClase"
+            android:exported="true" />
 
     </application>
 

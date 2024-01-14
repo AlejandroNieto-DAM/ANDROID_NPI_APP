@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Primer bloque de escala -->
+    <objectAnimator
+        android:propertyName="scaleX"
+        android:valueFrom="1.0"
+        android:valueTo="3"
+        android:duration="1500"/>
+
+    <objectAnimator
+        android:propertyName="scaleY"
+        android:valueFrom="1.0"
+        android:valueTo="3"
+        android:duration="1500"/>
+
+    <!-- Segundo bloque de escala -->
+    <objectAnimator
+        android:propertyName="scaleX"
+        android:valueFrom="3"
+        android:valueTo="1.0"
+        android:startOffset="1500"
+        android:duration="1500"/>
+
+    <objectAnimator
+        android:propertyName="scaleY"
+        android:valueFrom="3"
+        android:valueTo="1.0"
+        android:startOffset="1500"
+        android:duration="1500"/>
+
+    <!-- Tercer bloque de escala -->
+    <objectAnimator
+        android:propertyName="scaleX"
+        android:valueFrom="1.0"
+        android:valueTo="3"
+        android:startOffset="3000"
+        android:duration="1500"/>
+
+    <objectAnimator
+        android:propertyName="scaleY"
+        android:valueFrom="1.0"
+        android:valueTo="3"
+        android:startOffset="3000"
+        android:duration="1500"/>
+
+    <!-- Cuarto bloque de escala -->
+    <objectAnimator
+        android:propertyName="scaleX"
+        android:valueFrom="3"
+        android:valueTo="1.0"
+        android:startOffset="4500"
+        android:duration="1500"/>
+
+    <objectAnimator
+        android:propertyName="scaleY"
+        android:valueFrom="3"
+        android:valueTo="1.0"
+        android:startOffset="4500"
+        android:duration="1500"/>
+
+    <!-- Quinto bloque de escala -->
+    <objectAnimator
+        android:propertyName="scaleX"
+        android:valueFrom="1.0"
+        android:valueTo="3"
+        android:startOffset="6000"
+        android:duration="1500"/>
+
+    <objectAnimator
+        android:propertyName="scaleY"
+        android:valueFrom="1.0"
+        android:valueTo="3"
+        android:startOffset="6000"
+        android:duration="1500"/>
+
+    <!-- Sexto bloque de escala -->
+    <objectAnimator
+        android:propertyName="scaleX"
+        android:valueFrom="3"
+        android:valueTo="1.0"
+        android:startOffset="7500"
+        android:duration="1500"/>
+
+    <objectAnimator
+        android:propertyName="scaleY"
+        android:valueFrom="3"
+        android:valueTo="1.0"
+        android:startOffset="7500"
+        android:duration="1500"/>
+
+    <!-- Séptimo bloque de escala -->
+    <objectAnimator
+        android:propertyName="scaleX"
+        android:valueFrom="1.0"
+        android:valueTo="3"
+        android:startOffset="9000"
+        android:duration="1500"/>
+
+    <objectAnimator
+        android:propertyName="scaleY"
+        android:valueFrom="1.0"
+        android:valueTo="3"
+        android:startOffset="9000"
+        android:duration="1500"/>
+
+    <!-- Octavo bloque de escala -->
+    <objectAnimator
+        android:propertyName="scaleX"
+        android:valueFrom="3"
+        android:valueTo="1.0"
+        android:startOffset="10500"
+        android:duration="1500"/>
+
+    <objectAnimator
+        android:propertyName="scaleY"
+        android:valueFrom="3"
+        android:valueTo="1.0"
+        android:startOffset="10500"
+        android:duration="1500"/>
+
+    <!-- Noveno bloque de escala -->
+    <objectAnimator
+        android:propertyName="scaleX"
+        android:valueFrom="1.0"
+        android:valueTo="3"
+        android:startOffset="12000"
+        android:duration="1500"/>
+
+    <objectAnimator
+        android:propertyName="scaleY"
+        android:valueFrom="1.0"
+        android:valueTo="3"
+        android:startOffset="12000"
+        android:duration="1500"/>
+
+    <!-- Décimo bloque de escala -->
+    <objectAnimator
+        android:propertyName="scaleX"
+        android:valueFrom="3"
+        android:valueTo="1.0"
+        android:startOffset="13500"
+        android:duration="1500"/>
+
+    <objectAnimator
+        android:propertyName="scaleY"
+        android:valueFrom="3"
+        android:valueTo="1.0"
+        android:startOffset="13500"
+        android:duration="1500"/>
+
+    <!-- Puedes agregar más bloques de escalas para más repeticiones -->
+
+</set>
+

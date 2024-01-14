@@ -21,6 +21,7 @@ import java.util.ArrayList;
 public class MenuActivity extends AppCompatActivity implements OnGesturePerformedListener  {
 
     private GestureLibrary objGestureList;
+    public static boolean developerMode = false;
 
     LinearLayout qrOption, locationsOption, administration, reservar_menu, read_nfc;
 
@@ -96,10 +97,18 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
         ArrayList<Prediction> objPrediction = objGestureList.recognize(gesture);
         if(objPrediction.size() > 0 && objPrediction.get(0).score > 1){
             String gestureName = objPrediction.get(0).name;
-            Toast.makeText(this, gestureName, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, gestureName, Toast.LENGTH_SHORT).show();
             if (gestureName.contains("Daltonismo")){
-                String a = "Sisi";
-                Toast.makeText(this, "Changing to daltonic mode", Toast.LENGTH_SHORT).show();
+                MenuActivity.developerMode = !MenuActivity.developerMode;
+
+                if (MenuActivity.developerMode){
+                    Toast.makeText(this, "Changing to developers mode", Toast.LENGTH_SHORT).show();
+                }
+
+                if (!MenuActivity.developerMode){
+                    Toast.makeText(this, "Changing to normal mode", Toast.LENGTH_SHORT).show();
+                }
+
 
             }
 
