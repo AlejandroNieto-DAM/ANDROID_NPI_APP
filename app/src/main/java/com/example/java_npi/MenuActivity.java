@@ -22,7 +22,7 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
 
     private GestureLibrary objGestureList;
 
-    LinearLayout qrOption, locationsOption, administration, brujula, reservar_menu, gestos;
+    LinearLayout qrOption, locationsOption, administration, reservar_menu, read_nfc;
 
 
     @Override
@@ -42,7 +42,7 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
         locationsOption = (LinearLayout) findViewById(R.id.locations_option);
         administration = (LinearLayout) findViewById(R.id.administration);
         reservar_menu = (LinearLayout) findViewById(R.id.reservar_menu);
-
+        read_nfc = (LinearLayout) findViewById(R.id.readNfc);
 
         qrOption.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,8 +82,15 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
             }
         });
 
-
+        read_nfc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ReadNFCTag.class);
+                startActivity(intent);
+            }
+        });
     }
+
     @Override
     public void onGesturePerformed(GestureOverlayView overlay, Gesture gesture) {
         ArrayList<Prediction> objPrediction = objGestureList.recognize(gesture);
