@@ -5,7 +5,9 @@ import android.gesture.Gesture;
 import android.gesture.GestureOverlayView;
 import android.gesture.Prediction;
 import android.os.Bundle;
+import android.speech.RecognizerIntent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import android.gesture.GestureLibraries;
@@ -25,11 +27,14 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
 
     LinearLayout qrOption, locationsOption, administration, reservar_menu, read_nfc;
 
+    ImageView toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_layout);
+
+        toolbar = findViewById(R.id.VoiceIcon1);
 
         objGestureList = GestureLibraries.fromRawResource(this, R.raw.gesture);
         if(!objGestureList.load()){
@@ -90,6 +95,37 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
                 startActivity(intent);
             }
         });
+    }
+
+    public void onBackButtonClick(View view) {
+        // Perform actions on back button click (e.g., navigate back)
+        onBackPressed();
+    }
+
+    public void onVoiceButtonClick(View view) {
+        // Perform actions on back button click (e.g., navigate back)
+        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "es-ES"); // Set Spanish language
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Habla ahora");
+        startActivityForResult(intent, 111);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 111 && resultCode == RESULT_OK) {
+            // Obtener la lista de resultados
+            ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+
+            // Mostrar el primer resultado (la transcripción de voz)
+            if (result != null && result.size() > 0) {
+                String transcripcion = result.get(0);
+                // Haz algo con la transcripción, por ejemplo, muéstrala en un Toast
+                Toast.makeText(this, "Texto reconocido: " + transcripcion, Toast.LENGTH_LONG).show();
+            }
+        }
     }
 
     @Override
