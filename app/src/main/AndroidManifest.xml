@@ -69,6 +69,9 @@
         <activity
             android:name=".HorarioClase"
             android:exported="true" />
+        <activity
+            android:name=".ChatBot"
+            android:exported="true" />
 
     </application>
 

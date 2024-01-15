@@ -6,6 +6,7 @@ import android.gesture.GestureOverlayView;
 import android.gesture.Prediction;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -20,6 +21,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
+import io.kommunicate.KmConversationBuilder;
+import io.kommunicate.Kommunicate;
+import io.kommunicate.callbacks.KmCallback;
+
 public class MenuActivity extends AppCompatActivity implements OnGesturePerformedListener  {
 
     private GestureLibrary objGestureList;
@@ -33,6 +38,7 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_layout);
+
 
         toolbar = findViewById(R.id.VoiceIcon1);
 
@@ -95,6 +101,30 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
                 startActivity(intent);
             }
         });
+    }
+
+    public void chatBotClick(View view) {
+        // Perform actions on back button click (e.g., navigate back)
+        Kommunicate.init(this, "1e5a2696e1001f90c1312f0cf83e2b37b");
+
+        // Create a new conversation
+        new KmConversationBuilder(this)
+                .setSingleConversation(false)
+                .createConversation(new KmCallback() {
+                    @Override
+                    public void onSuccess(Object message) {
+                        String conversationId = message.toString();
+                    }
+
+                    @Override
+                    public void onFailure(Object error) {
+                        Log.d("ConversationTest", "Error: " + error);
+                    }
+                });
+
+        // Open the Kommunicate chat widget
+        Kommunicate.openConversation(this);
+
     }
 
     public void onBackButtonClick(View view) {

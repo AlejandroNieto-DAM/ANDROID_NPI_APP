@@ -8,7 +8,8 @@
     android:background="@color/white"
     android:layout_margin="0dp"
     android:alignmentMode="alignMargins"
-    android:columnOrderPreserved="false">
+    android:columnOrderPreserved="false"
+    android:backgroundTint="@color/orange">
 
     <!-- Opción 1 -->
     <androidx.cardview.widget.CardView
@@ -20,7 +21,8 @@
         android:layout_rowWeight="1"
         android:layout_columnWeight="1"
         android:layout_columnSpan="1"
-        android:radius="8dp">
+        android:radius="8dp"
+        android:background="@color/white">
 
 
         <ImageView
@@ -28,6 +30,7 @@
             android:layout_height="match_parent"
             android:src="@drawable/becasugr"
             android:scaleType="centerCrop"/>
+
     </androidx.cardview.widget.CardView>
 
     <TextView
