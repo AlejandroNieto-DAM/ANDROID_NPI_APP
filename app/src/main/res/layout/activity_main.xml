@@ -22,10 +22,18 @@
         android:padding="70dp"
         android:gravity="center">
 
-        <ImageView
+        <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ic_ugr_foreground"/>
+            app:cardCornerRadius="50dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_ugr_foreground"/>
+
+        </androidx.cardview.widget.CardView>
+
 
 
 
@@ -36,7 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         app:cardCornerRadius="28dp"
-        android:layout_marginBottom="-20dp"
+        android:layout_marginBottom="-14dp"
         >
 
         <LinearLayout
@@ -98,6 +106,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_marginTop="0dp"
                 >
 
                 <com.google.android.material.button.MaterialButton

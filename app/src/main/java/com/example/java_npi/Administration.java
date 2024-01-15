@@ -8,13 +8,14 @@ import android.webkit.WebView;
 import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 public class Administration extends  AppCompatActivity{
 
-    LinearLayout becasOption;
-    LinearLayout movilidadOption;
-    LinearLayout oficinaOption;
-    LinearLayout sedeOption;
+    CardView becasOption;
+    CardView movilidadOption;
+    CardView oficinaOption;
+    CardView sedeOption;
 
     WebView web;
     WebSettings webSettings;
@@ -29,10 +30,10 @@ public class Administration extends  AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_administration);
 
-        becasOption = (LinearLayout) findViewById(R.id.becas);
-        movilidadOption = (LinearLayout) findViewById(R.id.movilidad);
-        sedeOption = (LinearLayout) findViewById(R.id.sede_electronica);
-        oficinaOption = (LinearLayout) findViewById(R.id.oficina_virtual);
+        becasOption = (CardView) findViewById(R.id.becas);
+        movilidadOption = (CardView) findViewById(R.id.movilidad);
+        sedeOption = (CardView) findViewById(R.id.sede_electronica);
+        oficinaOption = (CardView) findViewById(R.id.oficina_virtual);
 
 
         // cargar la clase web

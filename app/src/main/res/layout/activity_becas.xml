@@ -1,101 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/gridLayout"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:columnCount="1"
-    android:rowCount="3"
-    android:background="@color/white"
-    android:layout_margin="0dp"
-    android:alignmentMode="alignMargins"
-    android:columnOrderPreserved="false"
-    android:backgroundTint="@color/orange">
-
-    <!-- Opción 1 -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/becasugr"
-        android:layout_width="350dp"
-        android:layout_height="200dp"
-        android:layout_marginBottom="16dp"
-        android:layout_gravity="center"
-        android:layout_rowWeight="1"
-        android:layout_columnWeight="1"
-        android:layout_columnSpan="1"
-        android:radius="8dp"
-        android:background="@color/white">
+    android:background="@drawable/background_img_ugr"
+    android:orientation="vertical"
+    android:paddingTop="35dp"
+    >
 
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/becasugr"
-            android:scaleType="centerCrop"/>
-
-    </androidx.cardview.widget.CardView>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Becas UGR"
-        android:gravity="center"
-        android:textSize="20sp"
+        android:text="BECAS"
+        android:textSize="35dp"
+        android:textAlignment="center"
+        android:padding="8dp"
+        android:layout_marginTop="25dp"
         android:textStyle="bold"
+        >
+    </TextView>
 
-        android:layout_gravity="center_horizontal"/>
 
-    <!-- Opción 2 -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/becasministerio"
-        android:layout_width="350dp"
-        android:layout_height="200dp"
-        android:layout_marginBottom="16dp"
-        android:layout_gravity="center"
-        android:layout_rowWeight="1"
-        android:layout_columnWeight="1"
-        android:layout_columnSpan="1"
-        android:radius="8dp">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/becasministerio"
-            android:scaleType="fitCenter"/>
-    </androidx.cardview.widget.CardView>
-
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Becas del ministerio"
-        android:gravity="center"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_gravity="center_horizontal"/>
+        android:orientation="horizontal"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp">
 
-    <!-- Opción 3 -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/becasjunta"
-        android:layout_width="350dp"
-        android:layout_height="200dp"
-        android:layout_gravity="center"
-        android:layout_rowWeight="1"
-        android:layout_columnWeight="1"
-        android:layout_columnSpan="1"
-        android:radius="8dp">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/becasugr"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/becasjuntaandalucia"
-            android:scaleType="centerCrop"/>
-    </androidx.cardview.widget.CardView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/white"
+                android:gravity="center"
+                android:padding="10dp">
 
-    <TextView
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/logo_ugr_circular_solo_escudo"
+                    android:layout_marginLeft="20dp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingLeft="20dp"
+                    android:textAlignment="center"
+                    android:text="Becas UGR"
+                    android:textSize="22dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Becas Junta de Andalucía"
-        android:gravity="center"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_gravity="center_horizontal"/>
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp">
 
-</GridLayout>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/becasministerio"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/white"
+                android:gravity="center"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/iconoespana"
+                    android:layout_marginLeft="20dp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingLeft="20dp"
+                    android:textAlignment="center"
+                    android:text="Becas Ministerio"
+                    android:textSize="22dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/becasjunta"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/white"
+                android:gravity="center"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/juntaicono"
+                    android:layout_marginLeft="20dp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingLeft="20dp"
+                    android:textAlignment="center"
+                    android:text="Becas Junta de Andalucía"
+                    android:textSize="22dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+
+</LinearLayout>

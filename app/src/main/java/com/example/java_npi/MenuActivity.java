@@ -1,5 +1,6 @@
 package com.example.java_npi;
 
+import android.content.Context;
 import android.content.Intent;
 import android.gesture.Gesture;
 import android.gesture.GestureOverlayView;
@@ -19,10 +20,15 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.ArrayList;
+import com.applozic.mobicommons.commons.core.utils.Utils;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import io.kommunicate.KmChatBuilder;
 import io.kommunicate.KmConversationBuilder;
 import io.kommunicate.Kommunicate;
+import io.kommunicate.callbacks.KMLogoutHandler;
 import io.kommunicate.callbacks.KmCallback;
 
 public class MenuActivity extends AppCompatActivity implements OnGesturePerformedListener  {
@@ -105,11 +111,10 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
 
     public void chatBotClick(View view) {
         // Perform actions on back button click (e.g., navigate back)
+
         Kommunicate.init(this, "1e5a2696e1001f90c1312f0cf83e2b37b");
 
-        // Create a new conversation
         new KmConversationBuilder(this)
-                .setSingleConversation(false)
                 .createConversation(new KmCallback() {
                     @Override
                     public void onSuccess(Object message) {
@@ -118,12 +123,30 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
 
                     @Override
                     public void onFailure(Object error) {
-                        Log.d("ConversationTest", "Error: " + error);
+                        Log.d("ConversationTest", "Error : " + error);
                     }
                 });
 
         // Open the Kommunicate chat widget
         Kommunicate.openConversation(this);
+
+        logoutAndClearConversations();
+
+    }
+
+    private void logoutAndClearConversations() {
+        Kommunicate.logout(this, new KMLogoutHandler() {
+            @Override
+            public void onSuccess(Context context) {
+                Log.i("Logout","Success");
+            }
+
+            @Override
+            public void onFailure(Exception exception) {
+                Log.i("Logout","Failed");
+
+            }
+        });
 
     }
 

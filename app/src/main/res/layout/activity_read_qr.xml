@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ScanQR"
 
-    android:alpha="100">
+    android:alpha="100"
+    android:background="@drawable/background_img_ugr">
 
     <ImageView
         android:layout_width="match_parent"
