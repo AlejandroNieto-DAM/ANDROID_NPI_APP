@@ -168,7 +168,7 @@ public class ReadNFCTag extends AppCompatActivity {
                         ndefFormatable.connect();
                         ndefFormatable.format(messageToWrite);
                         ndefFormatable.close();
-                        Toast.makeText(this, "Tag formatted and written", Toast.LENGTH_LONG).show();
+                        Toast.makeText(this, "TAG FORMATEADA Y ESCRITA", Toast.LENGTH_LONG).show();
                     } else {
 
                     }
@@ -176,7 +176,7 @@ public class ReadNFCTag extends AppCompatActivity {
                     ndef.connect();
                     ndef.writeNdefMessage(messageToWrite);
                     ndef.close();
-                    Toast.makeText(this, "Tag written", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "TAG ESCRITA", Toast.LENGTH_LONG).show();
 
 
                 }
@@ -213,10 +213,15 @@ public class ReadNFCTag extends AppCompatActivity {
                                         startActivity(intent1);
                                     }
 
+                                    Toast.makeText(this, "Tag no leida correctamente o no es una clase.", Toast.LENGTH_LONG).show();
+
+
+
+
                                 } else {
                                     textView.setText("");
-                                    textView.append("Tag written ");
-                                    textView.append("TEXT ");
+                                    textView.append("TAG ESCRITA ");
+                                    textView.append("TEXTO: ");
                                     textView.append(new String(record.getPayload()));
                                     textView.append("\n");
                                 }
@@ -245,7 +250,7 @@ public class ReadNFCTag extends AppCompatActivity {
 
             NdefRecord record = new NdefRecord(NdefRecord.TNF_WELL_KNOWN, NdefRecord.RTD_TEXT, new byte[0], payload);
             messageToWrite = new NdefMessage(new NdefRecord[]{record});
-            textView.setText("Please tap a tag to write the text");
+            textView.setText("Acerca una tag para escribirla");
 
             enableWrite();
 
@@ -254,13 +259,6 @@ public class ReadNFCTag extends AppCompatActivity {
         }
     }
 
-    public void onWriteUri(View view) {
-        NdefRecord record = NdefRecord.createUri(input.getText().toString());
-        messageToWrite = new NdefMessage(new NdefRecord[]{record});
-        textView.setText("Please tap a tag to write the uri");
-
-        enableWrite();
-    }
 
 
 

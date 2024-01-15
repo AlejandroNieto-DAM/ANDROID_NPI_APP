@@ -1,33 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="16dp"
     tools:context=".ReadNFCTag"
-    android:background="@drawable/background_img_ugr">
+    android:background="@drawable/background_img_ugr"
+    android:orientation="vertical">
 
     <TextView
-        android:id="@+id/text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Esta es la actividad NFC Reader"
-        android:textSize="18sp"
+        android:text="PANTALLA ADMINISTRADOR"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:layout_marginTop="40dp"
+
         />
 
-    <EditText
-        android:id="@+id/input"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp">
+        app:cardCornerRadius="25dp"
+        app:cardBackgroundColor="@color/white"
+        android:layout_marginTop="95dp"
+        >
 
-    </EditText>
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="NFC READER PARA ADMINISTRADOR"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            android:layout_margin="20dp"
+            />
 
-    <Button
-        android:id="@+id/btn_write"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        android:text="Escribir tag"></Button>
+        <EditText
+            android:id="@+id/input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
 
-</RelativeLayout>
+        </EditText>
+
+        <Button
+            android:id="@+id/btn_write"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="150dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="30dp"
+            android:text="Escribir tag"></Button>
+
+    </androidx.cardview.widget.CardView>
+
+
+
+</LinearLayout>
