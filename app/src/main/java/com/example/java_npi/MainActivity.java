@@ -59,9 +59,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 androidx.biometric.BiometricPrompt.PromptInfo promptInfo = new androidx.biometric.BiometricPrompt.PromptInfo.Builder()
-                        .setTitle("Please Verify")
-                        .setDescription("User Authentication is required to proceed")
-                        .setNegativeButtonText("Cancel")
+                        .setTitle("Acceso biométrico")
+                        .setDescription("Se requiere autenticación del usuario para continuar")
+                        .setNegativeButtonText("Cancelar")
                         .build();
                 getPrompt().authenticate(promptInfo);
             }
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onAuthenticationSucceeded(BiometricPrompt.AuthenticationResult result) {
                 super.onAuthenticationSucceeded(result);
-                notifyUser("Authentication succeeded");
+                notifyUser("Acceso aceptado");
                 Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
                 startActivity(intent);
             }
@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onAuthenticationFailed() {
                 super.onAuthenticationFailed();
-                notifyUser("Authentication failed");
+                notifyUser("Acceso denegado");
             }
         };
         //androidx o hardware
