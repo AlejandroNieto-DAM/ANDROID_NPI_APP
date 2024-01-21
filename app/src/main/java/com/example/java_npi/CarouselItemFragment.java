@@ -100,7 +100,7 @@ public class CarouselItemFragment extends Fragment {
                         der.x =  37.19068217259672;
                         der.y = -3.6110211903578473;
                         der.padre = izq;
-                        der.info = "Sigue hacia el gimnasio";
+                        der.info = "Final!";
 
                         Locations.generarCamino.add(poste);
                         Locations.generarCamino.add(sigPoste);
