@@ -19,24 +19,13 @@
         android:id="@+id/textViewTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cambiar datos de inicio de sesión"
+        android:text="Cambiar la contraseña"
         android:textStyle="bold"
         android:textColor="@color/orange"
         android:textSize="20sp"
         android:layout_marginTop="80dp"
         android:layout_marginStart="16dp"/>
 
-    <!-- Campos para el nuevo usuario y contraseña -->
-    <EditText
-        android:id="@+id/editTextNuevoUsuario"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Introduce un nuevo usuario"
-        android:inputType="text"
-        android:layout_below="@id/textViewTitulo"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"/>
 
     <EditText
         android:id="@+id/editTextNuevaContrasena"
@@ -44,7 +33,7 @@
         android:layout_height="wrap_content"
         android:hint="Introduce una nueva contraseña"
         android:inputType="textPassword"
-        android:layout_below="@id/editTextNuevoUsuario"
+        android:layout_below="@id/textViewTitulo"
         android:layout_marginTop="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"/>
@@ -53,7 +42,7 @@
         android:id="@+id/btnCambiarCredenciales"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cambiar Credenciales"
+        android:text="Cambiar contraseña"
         android:layout_below="@id/editTextNuevaContrasena"
         android:backgroundTint="@color/orange"
         android:layout_marginTop="16dp"

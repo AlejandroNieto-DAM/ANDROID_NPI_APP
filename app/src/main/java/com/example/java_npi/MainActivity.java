@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.user = String.valueOf(username.getText());
                 MainActivity.pass = String.valueOf(password.getText());
 
-                if (user.equals(Configuration.username) && pass.equals(Configuration.password)){
+                if (Configuration.username.contains(user) && pass.equals(Configuration.password)){
                     Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
                     startActivity(intent);
 
