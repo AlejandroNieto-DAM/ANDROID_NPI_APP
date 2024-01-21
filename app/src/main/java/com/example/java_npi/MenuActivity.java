@@ -214,7 +214,7 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
         if(objPrediction.size() > 0 && objPrediction.get(0).score > 1){
             String gestureName = objPrediction.get(0).name;
             //Toast.makeText(this, gestureName, Toast.LENGTH_SHORT).show();
-            if (gestureName.contains("Daltonismo")){
+            if (gestureName.contains("developer")){
                 MenuActivity.developerMode = !MenuActivity.developerMode;
 
                 if (MenuActivity.developerMode){
