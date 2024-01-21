@@ -18,8 +18,7 @@ import java.util.concurrent.Executor;
 public class MainActivity extends AppCompatActivity {
 
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
-    public static String user = "";
-    public static String pass = "";
+
 
     EditText username;
     EditText password;
@@ -28,7 +27,9 @@ public class MainActivity extends AppCompatActivity {
     Button huellaBton;
 
     Bitmap bitmap;
-
+    //obtener credenciales de inicio de sesion
+    public static String user = "";
+    public static String pass = "";
     /**
      * Constructor de la clase, en ella buscamos los elementos que necesitamos en el layout
      * y manejamos los eventos segun los botones. Tenemos dos uno para hacer login a partir
@@ -53,9 +54,15 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.user = String.valueOf(username.getText());
                 MainActivity.pass = String.valueOf(password.getText());
 
-                Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
+                if (user.equals(Configuration.username) && pass.equals(Configuration.password)){
+                    Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
+                    startActivity(intent);
 
-                startActivity(intent);
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
+                }
+
 
 
             }

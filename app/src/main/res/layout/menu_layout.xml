@@ -278,6 +278,7 @@
                         app:cardElevation="4dp">
 
                         <LinearLayout
+                            android:id="@+id/configuracion"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
@@ -294,7 +295,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
-                                android:text="Debug"
+                                android:text="Configuración"
                                 android:textSize="20sp"
                                 android:textStyle="bold" />
                         </LinearLayout>

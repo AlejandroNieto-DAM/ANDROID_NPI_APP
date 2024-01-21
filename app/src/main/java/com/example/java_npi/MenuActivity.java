@@ -1,11 +1,12 @@
 package com.example.java_npi;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.gesture.Gesture;
+import android.gesture.GestureLibraries;
+import android.gesture.GestureLibrary;
 import android.gesture.GestureOverlayView;
+import android.gesture.GestureOverlayView.OnGesturePerformedListener;
 import android.gesture.Prediction;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
@@ -13,24 +14,16 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-
-import android.gesture.GestureLibraries;
-import android.gesture.GestureLibrary;
-import android.gesture.GestureOverlayView;
-import android.gesture.GestureOverlayView.OnGesturePerformedListener;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.applozic.mobicommons.commons.core.utils.Utils;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import io.kommunicate.KmChatBuilder;
 import io.kommunicate.KmConversationBuilder;
 import io.kommunicate.Kommunicate;
 import io.kommunicate.callbacks.KMLogoutHandler;
@@ -41,7 +34,7 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
     private GestureLibrary objGestureList;
     public static boolean developerMode = false;
 
-    LinearLayout qrOption, locationsOption, administration, reservar_menu, read_nfc;
+    LinearLayout qrOption, locationsOption, administration, reservar_menu, read_nfc, configuration;
 
     ImageView toolbar;
 
@@ -72,6 +65,7 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
         administration = (LinearLayout) findViewById(R.id.administration);
         reservar_menu = (LinearLayout) findViewById(R.id.reservar_menu);
         read_nfc = (LinearLayout) findViewById(R.id.readNfc);
+        configuration = (LinearLayout) findViewById(R.id.configuracion);
 
         qrOption.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,6 +111,14 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ReadNFCTag.class);
+                startActivity(intent);
+            }
+        });
+
+        configuration.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Configuration.class);
                 startActivity(intent);
             }
         });
