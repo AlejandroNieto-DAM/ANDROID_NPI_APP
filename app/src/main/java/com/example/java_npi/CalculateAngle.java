@@ -1,5 +1,10 @@
 package com.example.java_npi;
 
+/**
+ * Es una clase de apoyo para calcular el angulo entre dos vectores. Nos servirá
+ * para guiarnos con la brujula en CompassActivity ya que debemos de calcular el angulo
+ * entre dos vectores que son el punto destino y punto origen y punto norte y punto origen.
+ */
 public class CalculateAngle {
     public static double calculateAngle(Nodo puntoInicial, Nodo puntoFinal) {
 

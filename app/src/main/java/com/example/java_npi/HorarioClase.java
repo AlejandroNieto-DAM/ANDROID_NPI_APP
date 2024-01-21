@@ -13,6 +13,12 @@ public class HorarioClase extends AppCompatActivity {
     TextView className, day, first, second, thrid, fourth, fifth;
 
 
+    /**
+     * Constructor de la clase donde solamente mostramos información
+     * en base a si es una clase u otra. Muestra el horario de la clase en base
+     * al valor que tuvo la NFC tag.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,10 +44,5 @@ public class HorarioClase extends AppCompatActivity {
             fifth.setText("Fundamentos de Software");
 
         }
-
-
-
-
     }
-
 }

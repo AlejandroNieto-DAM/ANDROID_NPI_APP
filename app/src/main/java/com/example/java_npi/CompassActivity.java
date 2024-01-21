@@ -56,6 +56,13 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
     private int posCamino = 0;
 
     Button nextStep;
+
+    /**
+     * Constructor de la clase donde obtenemos los valores de los elementos que iremos cambiando del layout
+     * e iniciamos los sensores que vamos a usar que en este caso es la brujula compuesta por acelerómetro
+     * y magnetrometro.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -101,6 +108,12 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
         });
     }
 
+
+    /**
+     * Cada vez que el sensor cambie debemos de recalcular el angulo que hace el apuntador hacia el destino
+     * por lo cual si el sensor cambia debemos de recalcular la direccion.
+     * @param event
+     */
     @Override
     public void onSensorChanged(SensorEvent event) {
         if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
@@ -111,7 +124,6 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
             lastMagnetometerSet = true;
         }
 
-
         if (lastAccelerometerSet && lastMagnetometerSet) {
             updateDirection();
         }
@@ -119,6 +131,11 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
 
     }
 
+    /**
+     * Metodo el cual calcula la nueva dirección de la brujula en base al giro que ha realizado
+     * el teléfono. Para ello debemos de obtener la nueva posición de la brujula y recalcular el ángulo.
+     * Una vez calculado movemos la imágen mediante una animación.
+     */
     private void updateDirection() {
         float[] rotationMatrix = new float[9];
         float[] orientationValues = new float[3];
@@ -166,6 +183,7 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
         sensorManager.unregisterListener(this);
     }
 
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -174,6 +192,4 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
             sensorManager.registerListener(this, magnetometer, SensorManager.SENSOR_DELAY_NORMAL);
         }
     }
-
-
 }

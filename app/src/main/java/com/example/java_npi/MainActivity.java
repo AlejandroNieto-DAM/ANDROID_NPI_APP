@@ -29,6 +29,12 @@ public class MainActivity extends AppCompatActivity {
 
     Bitmap bitmap;
 
+    /**
+     * Constructor de la clase, en ella buscamos los elementos que necesitamos en el layout
+     * y manejamos los eventos segun los botones. Tenemos dos uno para hacer login a partir
+     * de usuario y contraseña y otro para hacer login con la huella.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +75,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Obtiene un objeto BiometricPrompt configurado con un callback personalizado.
+     *
+     * Este método crea un BiometricPrompt con un callback personalizado para manejar eventos de autenticación biométrica.
+     * El callback notifica al usuario sobre el resultado de la autenticación.
+     *
+     * @return Un objeto BiometricPrompt configurado.
+     */
     private BiometricPrompt getPrompt() {
         Executor executor = ContextCompat.getMainExecutor(this);
         BiometricPrompt.AuthenticationCallback callback = new BiometricPrompt.AuthenticationCallback() {

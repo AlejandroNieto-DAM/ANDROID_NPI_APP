@@ -45,6 +45,12 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
 
     ImageView toolbar;
 
+    /**
+     * Constructor de la clase MenuActivity donde se manejan los eventos para los distintos botones
+     * que mostramos en el layout que son las distintas opciones del menú
+     * También tenemos en cuenta el gesto que pueda hacer el usuario para entrar en developer mode
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -116,8 +122,13 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
         });
     }
 
+    /**
+     * Inicia una nueva conversación con el chatbot Kommunicate y abre las conversaciones
+     * redirigiendote a su pantalla.
+     * Una vez finalizado cierra y borra la conversación.
+     * @param view
+     */
     public void chatBotClick(View view) {
-        // Perform actions on back button click (e.g., navigate back)
 
         Kommunicate.init(this, "1e5a2696e1001f90c1312f0cf83e2b37b");
 
@@ -141,6 +152,10 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
 
     }
 
+    /**
+     * Borra las conversaciones que tiene el usuario con el bot, esto es debido
+     * a que si no se borrasen se quedarían guardadas todas las conversaciones
+     */
     private void logoutAndClearConversations() {
         Kommunicate.logout(this, new KMLogoutHandler() {
             @Override
@@ -157,6 +172,9 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
 
     }
 
+    /**
+     * Inicia la camara para poder escanear un QR
+     */
     private void scanCode(){
         ScanOptions options = new ScanOptions();
         options.setPrompt("Volumen arriba para activar flash");
@@ -165,7 +183,6 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
         options.setCaptureActivity(CaptureAct.class);
         barLauncher.launch(options);
     }
-
     ActivityResultLauncher<ScanOptions> barLauncher = registerForActivityResult(new ScanContract(), result->
     {
         if(result.getContents() !=null)
@@ -177,11 +194,11 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
         }
     });
 
-    public void onBackButtonClick(View view) {
-        // Perform actions on back button click (e.g., navigate back)
-        onBackPressed();
-    }
-
+    /**
+     * Inicia el reconocedor de voz de google para
+     * iniciar de esta forma el asistente por voz.
+     * @param view
+     */
     public void onVoiceButtonClick(View view) {
         // Perform actions on back button click (e.g., navigate back)
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
@@ -191,6 +208,13 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
         startActivityForResult(intent, 111);
     }
 
+    /**
+     * Una vez reconocido el texto a través del asistente de voz aqui es donde ejecutamos las
+     * distintas operaciones a realizar.
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -208,6 +232,14 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
         }
     }
 
+    /**
+     * Para cada gesto que se realice en la pantalla tenemos que comprobar si es el gesto que inicia el modo
+     * developer para lo cual deberemos de ir iterando sobre los distintos gestos que tenemos guardados, que en
+     * este caso es solo uno y vez si el gesto reconocido se parece a el y de esta forma activar/desactivar el
+     * modo desarrollador.
+     * @param overlay
+     * @param gesture
+     */
     @Override
     public void onGesturePerformed(GestureOverlayView overlay, Gesture gesture) {
         ArrayList<Prediction> objPrediction = objGestureList.recognize(gesture);
@@ -224,7 +256,6 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
                 if (!MenuActivity.developerMode){
                     Toast.makeText(this, "Changing to normal mode", Toast.LENGTH_SHORT).show();
                 }
-
 
             }
 

@@ -19,6 +19,10 @@ import com.journeyapps.barcodescanner.BarcodeEncoder;
 public class LoggedActivity extends AppCompatActivity {
 
     ImageView imageCode;
+    /**
+     * Constructor de la clase donde obtenemos los datos del usuario para
+     * generar el qr en base a sus credenciales y mostrarla.
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.logged_activity);
@@ -29,6 +33,10 @@ public class LoggedActivity extends AppCompatActivity {
         generateImageAndDisplay(message);
     }
 
+    /***
+     * Genera un QR con la información del usuario.
+     * @param info
+     */
     private void generateImageAndDisplay(String info){
 
         MultiFormatWriter mWriter = new MultiFormatWriter();
