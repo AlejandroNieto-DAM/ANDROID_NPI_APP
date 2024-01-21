@@ -170,18 +170,10 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
     {
         if(result.getContents() !=null)
         {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Respuesta:");
-            //builder.setMessage(result.getContents());
-            builder.setMessage("Su menu ha sido correctamente reservado!");
-            builder.setPositiveButton("OK", new DialogInterface.OnClickListener()
-            {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i)
-                {
-                    dialogInterface.dismiss();
-                }
-            }).show();
+            if(result.getContents().contains("Menu")){
+                Intent intent = new Intent(getApplicationContext(), MenuReservadoExito.class);
+                startActivity(intent);
+            }
         }
     });
 
