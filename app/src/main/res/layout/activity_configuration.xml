@@ -61,14 +61,36 @@
         android:layout_marginEnd="16dp"/>
 
     <TextView
+        android:id="@+id/textLanguage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/notificaciones"
+
+        android:text="Cambiar idioma de la asistencia por voz"
+        android:textStyle="bold"
+        android:textColor="@color/orange"
+        android:textSize="20sp"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="16dp"/>
+
+    <Spinner
+        android:id="@+id/spinnerOpciones"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textLanguage"
+
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:entries="@array/alphabet_color" />
+
+    <TextView
         android:id="@+id/textversion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Versión 1.0"
         android:textColor="@color/black"
-        android:layout_below="@id/notificaciones"
         android:textSize="15sp"
-        android:layout_marginTop="350dp"
+        android:layout_marginTop="700dp"
         android:layout_centerHorizontal="true"/>
 </RelativeLayout>
 

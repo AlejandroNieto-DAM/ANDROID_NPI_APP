@@ -24,7 +24,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
 
-import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.Locale;
 
@@ -38,7 +37,7 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
     private GestureLibrary objGestureList;
     public static boolean developerMode = false;
 
-    private TextToSpeech TTS;
+    public static TextToSpeech TTS;
 
     LinearLayout qrOption, locationsOption, administration, reservar_menu, read_nfc, configuration;
 
