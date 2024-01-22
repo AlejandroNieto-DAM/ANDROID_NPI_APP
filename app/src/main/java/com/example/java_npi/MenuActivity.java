@@ -10,6 +10,8 @@ import android.gesture.GestureOverlayView.OnGesturePerformedListener;
 import android.gesture.Prediction;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
+import android.speech.tts.TextToSpeech;
+import android.speech.tts.TextToSpeech.OnInitListener;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -22,7 +24,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
 
+import java.text.Normalizer;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import io.kommunicate.KmConversationBuilder;
 import io.kommunicate.Kommunicate;
@@ -33,6 +37,8 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
 
     private GestureLibrary objGestureList;
     public static boolean developerMode = false;
+
+    private TextToSpeech TTS;
 
     LinearLayout qrOption, locationsOption, administration, reservar_menu, read_nfc, configuration;
 
@@ -120,6 +126,15 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), Configuration.class);
                 startActivity(intent);
+            }
+        });
+
+        TTS = new TextToSpeech(this, new OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if (status != TextToSpeech.ERROR){
+                    TTS.setLanguage(new Locale("es", "ES"));
+                }
             }
         });
     }
@@ -210,6 +225,8 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
         startActivityForResult(intent, 111);
     }
 
+
+
     /**
      * Una vez reconocido el texto a través del asistente de voz aqui es donde ejecutamos las
      * distintas operaciones a realizar.
@@ -228,11 +245,73 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
             // Mostrar el primer resultado (la transcripción de voz)
             if (result != null && result.size() > 0) {
                 String transcripcion = result.get(0);
-                // Haz algo con la transcripción, por ejemplo, muéstrala en un Toast
-                Toast.makeText(this, "Texto reconocido: " + transcripcion, Toast.LENGTH_LONG).show();
+                boolean entendido = false;
+
+                //Toast.makeText(this, "Commando no entendido: " + transcripcion, Toast.LENGTH_LONG).show();
+
+                String command = transcripcion.toLowerCase();
+                //Check si contiene keywords
+                if (command.contains("trámites") || command.contains("administración")){
+                    entendido = true;
+                    Intent intent = new Intent(getApplicationContext(), Administration.class);
+                    startActivity(intent);
+                }
+                if (command.contains("menu")){
+                    entendido = true;
+                    scanCode();
+                }
+                if (command.contains("configuración")) {
+                    entendido = true;
+                    Intent intent = new Intent(getApplicationContext(), Configuration.class);
+                    startActivity(intent);
+                }
+                if (command.contains("lugar") || command.contains("mapa") || command.contains("como llegar a")) {
+                    entendido = true;
+                    Intent intent = new Intent(getApplicationContext(), Locations.class);
+                    startActivity(intent);
+                }
+                if (command.contains("nfc")) {
+                    entendido = true;
+                    Intent intent = new Intent(getApplicationContext(), ReadNFCTag.class);
+                    startActivity(intent);
+                }
+                if (command.contains("qr")) {
+                    entendido = true;
+                    Intent intent = new Intent(getApplicationContext(), LoggedActivity.class);
+                    intent.putExtra(MainActivity.EXTRA_MESSAGE, MainActivity.user+"@"+MainActivity.pass);
+
+                    startActivity(intent);
+                }
+                if (!entendido){
+                    TTS.speak("Perdone, no lo he entendido", TextToSpeech.QUEUE_FLUSH, null);
+                }
+
             }
         }
     }
+
+    /**
+     * Possible features:
+     *      getting somewhere: Ask how to get to: "Lugares"
+     *          -Cafetería
+     *          - Biblioteca
+     *          - Clases
+     *          - Comedor
+     *          - Consergeria
+     *          - Laboratorios
+     *          - Despachos
+     *      opening menu options:
+     *          "Escanear QR"
+     *          "Información" or "Administración": "Tramites"
+     *              Becas
+     *              Movilidad
+     *              Oficina virtual
+     *              Sede electronica
+     *          "Mostrar QR"
+     *          "Leer NFC"
+     *
+     */
+
 
     /**
      * Para cada gesto que se realice en la pantalla tenemos que comprobar si es el gesto que inicia el modo
