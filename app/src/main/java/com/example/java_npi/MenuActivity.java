@@ -207,6 +207,8 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
             if(result.getContents().contains("Menu")){
                 Intent intent = new Intent(getApplicationContext(), MenuReservadoExito.class);
                 startActivity(intent);
+            } else {
+                Toast.makeText(this, "QR no reconocido, pruebe de nuevo", Toast.LENGTH_LONG).show();
             }
         }
     });
