@@ -73,10 +73,10 @@ public class Configuration extends AppCompatActivity {
                 String opcionSeleccionada = parentView.getItemAtPosition(position).toString();
                 if(opcionSeleccionada.equals("Español")) {
                     MenuActivity.TTS.setLanguage(new Locale("es", "ES"));
-                    Toast.makeText(getApplicationContext(), "Idioma cambiado a: " + opcionSeleccionada, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(), "Idioma cambiado a: " + opcionSeleccionada, Toast.LENGTH_SHORT).show();
                 } else if (opcionSeleccionada.equals("English")) {
                     MenuActivity.TTS.setLanguage(new Locale("en", "US"));
-                    Toast.makeText(getApplicationContext(), "Idioma cambiado a: " + opcionSeleccionada, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(), "Idioma cambiado a: " + opcionSeleccionada, Toast.LENGTH_SHORT).show();
                 }
             }
 
