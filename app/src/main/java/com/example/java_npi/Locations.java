@@ -22,6 +22,13 @@ public class Locations extends AppCompatActivity {
     private ViewPager2 viewPager;
     private CarouselAdapter carouselAdapter;
 
+
+    /**
+     * Constructor de la clase. Usaremos un carousel para ir mostrando las diferentes localizaciones
+     * cada una de ellas trenda una descripción y un boton para poder ir hacia ella. El camino se generará
+     * a la hora de pulsar sobre el lugar al que se quiere ir
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

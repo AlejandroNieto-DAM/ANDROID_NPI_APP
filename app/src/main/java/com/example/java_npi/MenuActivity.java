@@ -27,6 +27,7 @@ import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.regex.Pattern;
@@ -268,7 +269,7 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
      * Checkea se el string dado contiene alguno de los substrings
      *
      * @param mainString
-     * @param substrings
+     * @param sentences
      * @return
      */
     public static boolean containsWords(String mainString, List<String> sentences){
@@ -301,7 +302,7 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
         //Toast.makeText(this, "Commando no entendido: " + transcripcion, Toast.LENGTH_LONG).show();
         String command = transcripcion.toLowerCase();
         //Check si contiene keywords
-        if (containsWords(command, List.of("becas", "scholarship", "beca"))){
+        if (containsWords(command, Arrays.asList("becas", "scholarship", "beca"))){
             entendido = true;
             if (Lang.equals("es")) {
                 TTS.speak("Yendo a información de becas", TextToSpeech.QUEUE_FLUSH, null);
@@ -311,7 +312,7 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
             Intent intent = new Intent(getApplicationContext(), Becas.class);
             startActivity(intent);
         }
-        else if (containsWords(command, List.of("movilidad", "exchange program", "cultural exchange"))){
+        else if (containsWords(command, Arrays.asList("movilidad", "exchange program", "cultural exchange"))){
             entendido = true;
             if (Lang.equals("es")) {
                 TTS.speak("Abriendo página web del programa de movilidad", TextToSpeech.QUEUE_FLUSH, null);
@@ -326,7 +327,7 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
             setContentView(web);
             web.loadUrl("https://internacional.ugr.es/pages/movilidad");
         }
-        else if (containsWords(command, List.of("oficina virtual", "virtual office"))){
+        else if (containsWords(command, Arrays.asList("oficina virtual", "virtual office"))){
             entendido = true;
             if (Lang.equals("es")) {
                 TTS.speak("Abriendo página web de la oficina virtual", TextToSpeech.QUEUE_FLUSH, null);
@@ -341,7 +342,7 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
             setContentView(web);
             web.loadUrl("https://oficinavirtual.ugr.es/ai/");
         }
-        else if(containsWords(command, List.of("sede electrónica", "electronic administration", "university page", "uni page"))){
+        else if(containsWords(command, Arrays.asList("sede electrónica", "electronic administration", "university page", "uni page"))){
             entendido = true;
             if (Lang.equals("es")) {
                 TTS.speak("Abriendo página web de la sede electrónica", TextToSpeech.QUEUE_FLUSH, null);
@@ -357,10 +358,10 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
             web.loadUrl("https://sede.ugr.es/");
         }
         //para ir a
-        else if (containsWords(command, List.of("llegar a ", "camino a", "get to", "path to", "guiame a", "enseñame donde está", "where", "donde"))
-        && containsWords(command, List.of( "coffee shop", "cafetería", "café" , "library", "biblioteca", "comedor", "dining", "diner", "clases",
+        else if (containsWords(command, Arrays.asList("llegar a ", "camino a", "get to", "path to", "guiame a", "enseñame donde está", "where", "donde"))
+        && containsWords(command, Arrays.asList( "coffee shop", "cafetería", "café" , "library", "biblioteca", "comedor", "dining", "diner", "clases",
                 "classes", "conserjería", "consierge", "caretaker", "laboratorio", "laboratory", "laboratories", "despacho", "office", "aulas", "aulario") )){
-            if (containsWords(command, List.of("cafeteria", "comedor", "dining", "diner", "aulario"))){
+            if (containsWords(command, Arrays.asList("cafeteria", "comedor", "dining", "diner", "aulario"))){
                 entendido = true;
                 if (Lang.equals("es")) {
                     TTS.speak("Para llegar al comedor, entre al edificio principal. Baje las escaleras y a su derecha se encuentra el comedor.", TextToSpeech.QUEUE_FLUSH, null);
@@ -369,7 +370,7 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
                 }
                 //CODIGO DE ABRIR MAPA A COMEDOR
             }
-            else if (containsWords(command, List.of("cafetería", "cafe", "coffee shop"))){
+            else if (containsWords(command, Arrays.asList("cafetería", "cafe", "coffee shop"))){
                 entendido = true;
                 if (Lang.equals("es")) {
                     TTS.speak("Para llegar a la cafetería, entre al edificio principal baje las escaleras. Frente suyo a la derecha se encuentra el comedor.", TextToSpeech.QUEUE_FLUSH, null);
@@ -378,7 +379,7 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
                 }
                 //CODIGO DE ABRIR MAPA A CAFETERÍA
             }
-            else if (containsWords(command, List.of("library", "biblioteca"))){
+            else if (containsWords(command, Arrays.asList("library", "biblioteca"))){
                 entendido = true;
                 if (Lang.equals("es")) {
                     TTS.speak("Para llegar a la biblioteca, desde el edificio principal tome las escaleras hacia arriba. En la primera planta, tome la puerta a la derecha. Al final de la sala a la derecha se encuentra la biblioteca.", TextToSpeech.QUEUE_FLUSH, null);
@@ -387,7 +388,7 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
                 }
                 //CODIGO DE ABRIR MAPA A BIBLIOTECA
             }
-            else if (containsWords(command, List.of("clases", "classes", "aulas", "aulario"))){
+            else if (containsWords(command, Arrays.asList("clases", "classes", "aulas", "aulario"))){
                 entendido = true;
                 if (Lang.equals("es")) {
                     TTS.speak("Para llegar a el edificio de los aulas, salga a la zona exterior. Luego sigue el camino al lado del edificio principal hasta llegar al edificio de las aulas. El primer dígito del aula indica la planta.", TextToSpeech.QUEUE_FLUSH, null);
@@ -396,7 +397,7 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
                 }
                 //CODIGO ABRIR MAPA A AULARIO
             }
-            else if (containsWords(command, List.of("conserjería", "consierge", "caretaker"))){
+            else if (containsWords(command, Arrays.asList("conserjería", "consierge", "caretaker"))){
                 entendido = true;
                 if (Lang.equals("es")) {
                     TTS.speak("Consergería se encuentra a la izquierda al entrar al edificio principal.", TextToSpeech.QUEUE_FLUSH, null);
@@ -405,7 +406,7 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
                 }
                 //CODIGO ABRIR MAPA A CONSERGERIA
             }
-            else if (containsWords(command, List.of("laboratorio", "laboratorios", "laboratories", "laboratory"))){
+            else if (containsWords(command, Arrays.asList("laboratorio", "laboratorios", "laboratories", "laboratory"))){
                 entendido = true;
                 if (Lang.equals("es")) {
                     TTS.speak(".", TextToSpeech.QUEUE_FLUSH, null);
@@ -414,7 +415,7 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
                 }
                 //CODIGO ABRIR MAPA A LOS LABORATORIOS (NO SE DONDE ESTÁN)
             }
-            else if (containsWords(command, List.of("despacho", "despachos", "office", "offices"))){
+            else if (containsWords(command, Arrays.asList("despacho", "despachos", "office", "offices"))){
                 entendido = true;
                 if (Lang.equals("es")) {
                     TTS.speak("Los despachos se encuentran en las plantas 2 y 3 del edificio principal. Las escaleras se encuentran a la derecha al entrar por la entrada principal.", TextToSpeech.QUEUE_FLUSH, null);
@@ -432,7 +433,7 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
             }
         }
         // mandar a trámites
-        else if (containsWords(command, List.of("trámites", "administración", "administration", "procedures"))) {
+        else if (containsWords(command, Arrays.asList("trámites", "administración", "administration", "procedures"))) {
             entendido = true;
             if (Lang.equals("es")){
                 TTS.speak("Abriendo menú de trámites.", TextToSpeech.QUEUE_FLUSH, null);
@@ -443,7 +444,7 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
             Intent intent = new Intent(getApplicationContext(), Administration.class);
             startActivity(intent);
             //mandar a preorder
-        } else if (containsWords(command, List.of("menú","comedor", "escanear qr", "scan qr", "menu", "preorder"))) {
+        } else if (containsWords(command, Arrays.asList("menú","comedor", "escanear qr", "scan qr", "menu", "preorder"))) {
             entendido = true;
             if (Lang.equals("es")){
                 TTS.speak("Scaneando QR de pedido.", TextToSpeech.QUEUE_FLUSH, null);
@@ -452,7 +453,7 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
                 TTS.speak("Scaning preorder QR code.", TextToSpeech.QUEUE_FLUSH, null);
             }
             scanCode();
-        } else if (containsWords(command, List.of("configuración", "configuration", "settings", "ajustes", "preferences"))) {
+        } else if (containsWords(command, Arrays.asList("configuración", "configuration", "settings", "ajustes", "preferences"))) {
             entendido = true;
             if (Lang.equals("es")) {
                 TTS.speak("Abriendo menu de configuración.", TextToSpeech.QUEUE_FLUSH, null);
@@ -462,7 +463,7 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
             Intent intent = new Intent(getApplicationContext(), Configuration.class);
             startActivity(intent);
         }
-        else if (containsWords(command, List.of("mapa","map"))) {
+        else if (containsWords(command, Arrays.asList("mapa","map"))) {
             entendido = true;
             if (Lang.equals("es")) {
                 TTS.speak("Abriendo menú de lugares.", TextToSpeech.QUEUE_FLUSH, null);
@@ -471,7 +472,7 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
             }
             Intent intent = new Intent(getApplicationContext(), Locations.class);
             startActivity(intent);
-        } else if (containsWords(command, List.of( "nfc"))) {
+        } else if (containsWords(command, Arrays.asList( "nfc"))) {
             entendido = true;
             if (Lang.equals("es")) {
                 TTS.speak("Abriendo lector de NFC.", TextToSpeech.QUEUE_FLUSH, null);
@@ -480,7 +481,7 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
             }
             Intent intent = new Intent(getApplicationContext(), ReadNFCTag.class);
             startActivity(intent);
-        } else if (containsWords(command, List.of("qr"))) {
+        } else if (containsWords(command, Arrays.asList("qr"))) {
             entendido = true;
             if (Lang.equals("es")) {
                 TTS.speak("Mostrando QR para autentificarse.", TextToSpeech.QUEUE_FLUSH, null);
@@ -491,7 +492,7 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
             intent.putExtra(MainActivity.EXTRA_MESSAGE, MainActivity.user + "@" + MainActivity.pass);
             startActivity(intent);
         }
-        else if (containsWords(command, List.of("switch spanish", "language spanish", "cambiar inglés", "lenguaje inglés"))){
+        else if (containsWords(command, Arrays.asList("switch spanish", "language spanish", "cambiar inglés", "lenguaje inglés"))){
             entendido = true;
             if (Lang.equals("es")) {
                 TTS.speak("Cambiando lenguaje a inglés.", TextToSpeech.QUEUE_FLUSH, null);

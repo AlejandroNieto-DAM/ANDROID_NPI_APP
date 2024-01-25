@@ -71,15 +71,16 @@ public class CarouselItemFragment extends Fragment {
                     case "CAFETERÍA":
                         Locations.selectedSite = "CAFETERÍA";
                         Nodo poste = new Nodo();
-                        poste.x = 37.19110857873402;
-                        poste.y = -3.609295916039702;
+                        poste.x = 37.4915111156136;
+                        poste.y = -2.766038235128223;
                         poste.padre = null;
                         poste.info = "Sigue hasta la esquina de la calle";
 
 
                         Nodo sigPoste = new Nodo();
-                        sigPoste.x =  37.19119233679828;
-                        sigPoste.y = -3.609489471737808;
+
+                        sigPoste.x =  37.491299287786795;
+                        sigPoste.y = -2.766883972512238;
                         sigPoste.padre = poste;
                         sigPoste.info = "Sigue andando hasta que te encuentres con un semaforo";
 
@@ -109,6 +110,7 @@ public class CarouselItemFragment extends Fragment {
                         Locations.generarCamino.add(der2);
 
                         break;
+
                     case "BIBLIOTECA":
                         Locations.selectedSite = "BIBLIOTECA";
 
