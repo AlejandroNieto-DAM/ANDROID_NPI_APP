@@ -52,8 +52,8 @@ public class Locations extends AppCompatActivity {
         carouselAdapter.addFragment(CarouselItemFragment.newInstance(R.drawable.clasees, "CLASES", infoClases));
         carouselAdapter.addFragment(CarouselItemFragment.newInstance(R.drawable.comedor, "COMEDOR", infoComedor));
         carouselAdapter.addFragment(CarouselItemFragment.newInstance(R.drawable.conserjeria, "CONSERJERIA", infoConserjeria));
-        carouselAdapter.addFragment(CarouselItemFragment.newInstance(R.drawable.conserjeria, "LABORATORIOS", infoConserjeria));
-        carouselAdapter.addFragment(CarouselItemFragment.newInstance(R.drawable.conserjeria, "DESPACHOS", infoConserjeria));
+        carouselAdapter.addFragment(CarouselItemFragment.newInstance(R.drawable.laboratorioimagenes, "LABORATORIOS", infoConserjeria));
+        carouselAdapter.addFragment(CarouselItemFragment.newInstance(R.drawable.despachos, "DESPACHOS", infoConserjeria));
 
     }
 

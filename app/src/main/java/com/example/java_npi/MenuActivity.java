@@ -33,6 +33,8 @@ import java.util.Locale;
 import java.util.regex.Pattern;
 
 import io.kommunicate.KmConversationBuilder;
+import io.kommunicate.KmConversationHelper;
+import io.kommunicate.KmException;
 import io.kommunicate.Kommunicate;
 import io.kommunicate.callbacks.KMLogoutHandler;
 import io.kommunicate.callbacks.KmCallback;
@@ -44,6 +46,9 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
 
     public static TextToSpeech TTS;
     public static String Lang = "es";
+
+    private String conversationId;
+    private boolean firstConv = true;
 
     LinearLayout qrOption, locationsOption, administration, reservar_menu, read_nfc, configuration;
 
@@ -61,6 +66,7 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_layout);
 
+        Kommunicate.init(this, "1e5a2696e1001f90c1312f0cf83e2b37b");
 
         toolbar = findViewById(R.id.VoiceIcon1);
 
@@ -152,27 +158,72 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
      *
      * @param view
      */
-    public void chatBotClick(View view) {
+    public void chatBotClick(View view) throws KmException {
 
-        Kommunicate.init(this, "1e5a2696e1001f90c1312f0cf83e2b37b");
 
-        new KmConversationBuilder(this)
-                .createConversation(new KmCallback() {
-                    @Override
-                    public void onSuccess(Object message) {
-                        String conversationId = message.toString();
-                    }
+        if(firstConv) {
 
-                    @Override
-                    public void onFailure(Object error) {
-                        Log.d("ConversationTest", "Error : " + error);
-                    }
-                });
 
-        // Open the Kommunicate chat widget
-        Kommunicate.openConversation(this);
+            new KmConversationBuilder(this)
+                    .createConversation(new KmCallback() {
+                        @Override
+                        public void onSuccess(Object message) {
+                            conversationId = message.toString();
+                        }
 
-        logoutAndClearConversations();
+                        @Override
+                        public void onFailure(Object error) {
+                            Log.d("ConversationTest", "Error : " + error);
+                        }
+                    });
+
+            Kommunicate.openConversation(this);
+            firstConv = false;
+
+        } else {
+
+            // Open the Kommunicate chat widget
+            //
+
+            KmConversationHelper.openConversation(this,
+                    true,
+                    Integer.valueOf(conversationId),
+                    new KmCallback() {
+                        @Override
+                        public void onSuccess(Object message) {
+
+                        }
+
+                        @Override
+                        public void onFailure(Object error) {
+
+                        }
+                    });
+
+            Kommunicate.openConversation(this);
+
+        }
+
+
+
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        Kommunicate.logout(this, new KMLogoutHandler() {
+            @Override
+            public void onSuccess(Context context) {
+                Log.i("Logout","Success");
+            }
+
+            @Override
+            public void onFailure(Exception exception) {
+                Log.i("Logout","Failed");
+
+            }
+        });
 
     }
 
@@ -181,18 +232,7 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
      * a que si no se borrasen se quedarían guardadas todas las conversaciones
      */
     private void logoutAndClearConversations() {
-        Kommunicate.logout(this, new KMLogoutHandler() {
-            @Override
-            public void onSuccess(Context context) {
-                Log.i("Logout", "Success");
-            }
 
-            @Override
-            public void onFailure(Exception exception) {
-                Log.i("Logout", "Failed");
-
-            }
-        });
 
     }
 

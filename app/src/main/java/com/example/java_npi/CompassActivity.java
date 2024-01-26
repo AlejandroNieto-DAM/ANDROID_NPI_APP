@@ -101,6 +101,9 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
                     posCamino+=1;
                     anglePos = calculateAngle(caminoASeguir.get(posCamino), caminoASeguir.get(posCamino + 1));
                     directionTextView.setText(caminoASeguir.get(posCamino).info);
+                } else {
+                    posCamino = caminoASeguir.size() - 1;
+                    directionTextView.setText(caminoASeguir.get(posCamino).info);
                 }
             }
         });
