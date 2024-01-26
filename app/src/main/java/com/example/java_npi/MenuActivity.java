@@ -177,10 +177,10 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
                         }
                     });
 
-            Kommunicate.openConversation(this);
+
             firstConv = false;
 
-        } else {
+        } else if(!firstConv){
 
             // Open the Kommunicate chat widget
             //
@@ -200,11 +200,9 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
                         }
                     });
 
-            Kommunicate.openConversation(this);
-
         }
 
-
+        Kommunicate.openConversation(this);
 
     }
 

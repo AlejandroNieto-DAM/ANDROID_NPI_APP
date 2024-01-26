@@ -220,14 +220,13 @@ public class ReadNFCTag extends AppCompatActivity {
                                     if (new String(record.getPayload()).contains("clase1")){
                                         ReadNFCTag.selectedClass = "Clase 1";
                                         startActivity(intent1);
-                                    }
-
-                                    if (new String(record.getPayload()).contains("clase2")){
+                                    } else if (new String(record.getPayload()).contains("clase2")){
                                         ReadNFCTag.selectedClass = "Clase 2";
                                         startActivity(intent1);
+                                    } else {
+                                        Toast.makeText(this, "Tag no leida correctamente o no es una clase.", Toast.LENGTH_LONG).show();
                                     }
 
-                                    Toast.makeText(this, "Tag no leida correctamente o no es una clase.", Toast.LENGTH_LONG).show();
 
 
 
