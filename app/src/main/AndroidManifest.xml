@@ -63,9 +63,6 @@
             android:name=".CompassActivity"
             android:exported="true" />
         <activity
-            android:name=".ScanQR"
-            android:exported="true" />
-        <activity
             android:name=".CaptureAct"
             android:exported="true"
             android:screenOrientation="portrait"

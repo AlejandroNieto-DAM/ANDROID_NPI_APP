@@ -3,7 +3,7 @@
         <item>Español</item>
         <item>English</item>
     </string-array>
-    <string name="app_name">Java_NPI</string>
+    <string name="app_name">Etsiit Helper</string>
     <string name="title_activity_becas">Becas</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>

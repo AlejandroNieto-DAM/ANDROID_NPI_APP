@@ -51,6 +51,12 @@ public class ReadNFCTag extends AppCompatActivity {
     public static String selectedClass = "";
 
 
+    /**
+     * Constructor de la clase que maneja carga un layout u otro dependiendo de si
+     * el usuario esta en modo developer, si esta en modo developer tendremos un layout
+     * que nos permitira escribir las nfc tags mientras que si no solo podremos leerlas
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -157,6 +163,10 @@ public class ReadNFCTag extends AppCompatActivity {
         }
     }
 
+    /**
+     * Metodo que usaremos para escribir la nfc
+     * @param intent
+     */
     private void writeTag(Intent intent) {
         Tag tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
         if (tag != null) {
@@ -178,7 +188,6 @@ public class ReadNFCTag extends AppCompatActivity {
                     ndef.close();
                     Toast.makeText(this, "TAG ESCRITA", Toast.LENGTH_LONG).show();
 
-
                 }
             } catch (FormatException | IOException e) {
                 throw new RuntimeException(e);
@@ -189,6 +198,11 @@ public class ReadNFCTag extends AppCompatActivity {
 
     }
 
+    /**
+     *
+     * Metodo que usaremos para leer la nfc tag
+     * @param intent
+     */
     private void readTag(Intent intent) {
         Parcelable[] messages = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
         //textView.setText("");
@@ -206,14 +220,13 @@ public class ReadNFCTag extends AppCompatActivity {
                                     if (new String(record.getPayload()).contains("clase1")){
                                         ReadNFCTag.selectedClass = "Clase 1";
                                         startActivity(intent1);
-                                    }
-
-                                    if (new String(record.getPayload()).contains("clase2")){
+                                    } else if (new String(record.getPayload()).contains("clase2")){
                                         ReadNFCTag.selectedClass = "Clase 2";
                                         startActivity(intent1);
+                                    } else {
+                                        Toast.makeText(this, "Tag no leida correctamente o no es una clase.", Toast.LENGTH_LONG).show();
                                     }
 
-                                    Toast.makeText(this, "Tag no leida correctamente o no es una clase.", Toast.LENGTH_LONG).show();
 
 
 

@@ -22,6 +22,13 @@ public class Locations extends AppCompatActivity {
     private ViewPager2 viewPager;
     private CarouselAdapter carouselAdapter;
 
+
+    /**
+     * Constructor de la clase. Usaremos un carousel para ir mostrando las diferentes localizaciones
+     * cada una de ellas trenda una descripción y un boton para poder ir hacia ella. El camino se generará
+     * a la hora de pulsar sobre el lugar al que se quiere ir
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,8 +52,8 @@ public class Locations extends AppCompatActivity {
         carouselAdapter.addFragment(CarouselItemFragment.newInstance(R.drawable.clasees, "CLASES", infoClases));
         carouselAdapter.addFragment(CarouselItemFragment.newInstance(R.drawable.comedor, "COMEDOR", infoComedor));
         carouselAdapter.addFragment(CarouselItemFragment.newInstance(R.drawable.conserjeria, "CONSERJERIA", infoConserjeria));
-        carouselAdapter.addFragment(CarouselItemFragment.newInstance(R.drawable.conserjeria, "LABORATORIOS", infoConserjeria));
-        carouselAdapter.addFragment(CarouselItemFragment.newInstance(R.drawable.conserjeria, "DESPACHOS", infoConserjeria));
+        carouselAdapter.addFragment(CarouselItemFragment.newInstance(R.drawable.laboratorioimagenes, "LABORATORIOS", infoConserjeria));
+        carouselAdapter.addFragment(CarouselItemFragment.newInstance(R.drawable.despachos, "DESPACHOS", infoConserjeria));
 
     }
 
