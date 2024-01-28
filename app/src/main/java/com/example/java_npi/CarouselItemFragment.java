@@ -43,6 +43,8 @@ public class CarouselItemFragment extends Fragment {
             info = getArguments().getString("info");
 
         }
+
+        // Recuperar ubi
     }
 
     @Override

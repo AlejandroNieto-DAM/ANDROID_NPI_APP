@@ -33,14 +33,13 @@
                     />
 
                 <ImageView
-                    android:layout_marginLeft="255dp"
                     android:id="@+id/VoiceIcon1"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:src="@drawable/microfonofinal"
-                    android:padding="8dp"
+                    android:layout_marginLeft="200dp"
                     android:onClick="onVoiceButtonClick"
-                    />
+                    android:padding="8dp"
+                    android:src="@drawable/microfonofinal" />
 
             </LinearLayout>
 

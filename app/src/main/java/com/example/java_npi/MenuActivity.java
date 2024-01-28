@@ -13,11 +13,15 @@ import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.TextToSpeech.OnInitListener;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -396,21 +400,28 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
             web.loadUrl("https://sede.ugr.es/");
         }
         //para ir a
-        else if (containsWords(command, Arrays.asList("llegar a ", "camino a", "get to", "path to", "guiame a", "enseñame donde está", "where", "donde"))
+        else if (containsWords(command, Arrays.asList("ir a", "go to", "llegar a ", "camino a", "get to", "path to", "guiame a", "enseñame donde está", "where", "donde"))
         && containsWords(command, Arrays.asList( "coffee shop", "cafetería", "café" , "library", "biblioteca", "comedor", "dining", "diner", "clases",
                 "classes", "conserjería", "consierge", "caretaker", "laboratorio", "laboratory", "laboratories", "despacho", "office", "aulas", "aulario") )){
+
+            int indexPlace = -1;
+
+            Locations.generarCamino.clear();
+
             if (containsWords(command, Arrays.asList("cafeteria", "comedor", "dining", "diner", "aulario"))){
                 entendido = true;
+                indexPlace = 3;
                 if (Lang.equals("es")) {
                     TTS.speak("Para llegar al comedor, entre al edificio principal. Baje las escaleras y a su derecha se encuentra el comedor.", TextToSpeech.QUEUE_FLUSH, null);
                 } else {
                     TTS.speak("To get to the diner, take the stairs to the basement from in the main building. Then to your right you will find the cafeteria.", TextToSpeech.QUEUE_FLUSH, null);
                 }
-                //CODIGO DE ABRIR MAPA A COMEDOR
             }
             else if (containsWords(command, Arrays.asList("cafetería", "cafe", "coffee shop"))){
                 entendido = true;
+                indexPlace = 0;
                 if (Lang.equals("es")) {
+
                     TTS.speak("Para llegar a la cafetería, entre al edificio principal baje las escaleras. Frente suyo a la derecha se encuentra el comedor.", TextToSpeech.QUEUE_FLUSH, null);
                 } else {
                     TTS.speak("To get to the cafe, take the stairs to the basement from in the main building. Then to your front right you will find the cafeteria.", TextToSpeech.QUEUE_FLUSH, null);
@@ -419,24 +430,27 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
             }
             else if (containsWords(command, Arrays.asList("library", "biblioteca"))){
                 entendido = true;
+                indexPlace = 1;
                 if (Lang.equals("es")) {
                     TTS.speak("Para llegar a la biblioteca, desde el edificio principal tome las escaleras hacia arriba. En la primera planta, tome la puerta a la derecha. Al final de la sala a la derecha se encuentra la biblioteca.", TextToSpeech.QUEUE_FLUSH, null);
                 } else {
                     TTS.speak("To get to the library, take the stairs to the right of the main building entrance upwards. At the first level, enter the door to the right. Then at the end of the lounge the door to the right.", TextToSpeech.QUEUE_FLUSH, null);
                 }
-                //CODIGO DE ABRIR MAPA A BIBLIOTECA
+
             }
             else if (containsWords(command, Arrays.asList("clases", "classes", "aulas", "aulario"))){
                 entendido = true;
+                indexPlace = 2;
+                Locations.selectedSite = "CLASES";
                 if (Lang.equals("es")) {
                     TTS.speak("Para llegar a el edificio de los aulas, salga a la zona exterior. Luego sigue el camino al lado del edificio principal hasta llegar al edificio de las aulas. El primer dígito del aula indica la planta.", TextToSpeech.QUEUE_FLUSH, null);
                 } else {
                     TTS.speak("To get to the classes building, go to the exterior zone. Then follow the path next to the main building till you arrive at the classes building. The first digit of the class indicates what floor it is on.", TextToSpeech.QUEUE_FLUSH, null);
                 }
-                //CODIGO ABRIR MAPA A AULARIO
             }
             else if (containsWords(command, Arrays.asList("conserjería", "consierge", "caretaker"))){
                 entendido = true;
+                indexPlace = 4;
                 if (Lang.equals("es")) {
                     TTS.speak("Consergería se encuentra a la izquierda al entrar al edificio principal.", TextToSpeech.QUEUE_FLUSH, null);
                 } else {
@@ -446,6 +460,7 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
             }
             else if (containsWords(command, Arrays.asList("laboratorio", "laboratorios", "laboratories", "laboratory"))){
                 entendido = true;
+                indexPlace = 5;
                 if (Lang.equals("es")) {
                     TTS.speak(".", TextToSpeech.QUEUE_FLUSH, null);
                 } else {
@@ -455,12 +470,12 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
             }
             else if (containsWords(command, Arrays.asList("despacho", "despachos", "office", "offices"))){
                 entendido = true;
+                indexPlace = 6;
                 if (Lang.equals("es")) {
                     TTS.speak("Los despachos se encuentran en las plantas 2 y 3 del edificio principal. Las escaleras se encuentran a la derecha al entrar por la entrada principal.", TextToSpeech.QUEUE_FLUSH, null);
                 } else {
                     TTS.speak("The offices are found on the second and third floors of the main building. The stairs and elevator can be found to the right after entering through the main entrance.", TextToSpeech.QUEUE_FLUSH, null);
                 }
-                //CODIGO ABRIR MAPA A LOS DESPACHOS
             }
             else{
                 if (Lang.equals("es")) {
@@ -468,7 +483,14 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
                 } else {
                     TTS.speak("Sorry, I didn't understand.", TextToSpeech.QUEUE_FLUSH, null);
                 }
+
             }
+            if (indexPlace != -1){
+                Intent intent = new Intent(getApplicationContext(), Locations.class);
+                intent.putExtra("selected_position", indexPlace);
+                startActivity(intent);
+            }
+
         }
         // mandar a trámites
         else if (containsWords(command, Arrays.asList("trámites", "administración", "administration", "procedures"))) {

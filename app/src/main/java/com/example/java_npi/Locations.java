@@ -55,6 +55,11 @@ public class Locations extends AppCompatActivity {
         carouselAdapter.addFragment(CarouselItemFragment.newInstance(R.drawable.laboratorioimagenes, "LABORATORIOS", infoConserjeria));
         carouselAdapter.addFragment(CarouselItemFragment.newInstance(R.drawable.despachos, "DESPACHOS", infoConserjeria));
 
+        // Recupera la posición desde el Intent
+        int selectedPosition = getIntent().getIntExtra("selected_position", 0);
+
+        // Establece la posición del ViewPager
+        viewPager.setCurrentItem(selectedPosition);
     }
 
     private static class CarouselAdapter extends FragmentStateAdapter {
