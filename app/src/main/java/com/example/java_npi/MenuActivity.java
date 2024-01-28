@@ -27,6 +27,7 @@ import android.widget.Toast;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.applozic.mobicommons.commons.core.utils.Utils;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
 
@@ -70,7 +71,24 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_layout);
 
+
+
+
         Kommunicate.init(this, "1e5a2696e1001f90c1312f0cf83e2b37b");
+
+        new KmConversationBuilder(this)
+                .createConversation(new KmCallback() {
+                    @Override
+                    public void onSuccess(Object message) {
+                        conversationId = message.toString();
+                    }
+
+                    @Override
+                    public void onFailure(Object error) {
+                        Log.d("ConversationTest", "Error : " + error);
+                    }
+                });
+
 
         toolbar = findViewById(R.id.VoiceIcon1);
 
@@ -164,10 +182,21 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
      */
     public void chatBotClick(View view) throws KmException {
 
+        if (conversationId != null){
+            Kommunicate.openConversation(this, Integer.valueOf(conversationId), new KmCallback() {
+                @Override
+                public void onSuccess(Object message) {
+                    //Utils.printLog(this, "ChatTest", "Launch Success : " + message);
+                }
 
-        if(firstConv) {
+                @Override
+                public void onFailure(Object error) {
+                    //Utils.printLog(this, "ChatTest", "Launch Failure : " + error);
+                }
+            });
 
-
+        } else {
+            Toast.makeText(this, "No se pudo conectar con el Chatbot", Toast.LENGTH_SHORT);
             new KmConversationBuilder(this)
                     .createConversation(new KmCallback() {
                         @Override
@@ -181,62 +210,41 @@ public class MenuActivity extends AppCompatActivity implements OnGesturePerforme
                         }
                     });
 
-
-            firstConv = false;
-
-        } else if(!firstConv){
-
-            // Open the Kommunicate chat widget
-            //
-
-            KmConversationHelper.openConversation(this,
-                    true,
-                    Integer.valueOf(conversationId),
-                    new KmCallback() {
-                        @Override
-                        public void onSuccess(Object message) {
-
-                        }
-
-                        @Override
-                        public void onFailure(Object error) {
-
-                        }
-                    });
-
         }
 
-        Kommunicate.openConversation(this);
+
 
     }
 
+
+
+    // You can also consider using onDestroy() depending on your app's lifecycle requirements
     @Override
-    public void onDestroy() {
+    protected void onDestroy() {
         super.onDestroy();
 
+        // Assuming that you want to logout from Kommunicate when the app is destroyed
+        logoutFromKommunicate();
+    }
+
+    private void logoutFromKommunicate() {
+        // Call Kommunicate.logout to log out the user from Kommunicate
         Kommunicate.logout(this, new KMLogoutHandler() {
             @Override
             public void onSuccess(Context context) {
-                Log.i("Logout","Success");
+                // Handle successful logout if needed
+                Log.i("Logout", "Success");
             }
 
             @Override
             public void onFailure(Exception exception) {
-                Log.i("Logout","Failed");
-
+                // Handle failure scenario if needed
+                Log.i("Logout", "Failed");
             }
         });
-
     }
 
-    /**
-     * Borra las conversaciones que tiene el usuario con el bot, esto es debido
-     * a que si no se borrasen se quedarían guardadas todas las conversaciones
-     */
-    private void logoutAndClearConversations() {
 
-
-    }
 
     /**
      * Inicia la camara para poder escanear un QR

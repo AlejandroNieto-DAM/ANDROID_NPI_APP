@@ -149,11 +149,6 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
             float azimuth = (float) Math.toDegrees(orientationValues[0]);
             azimuth = (azimuth + 360) % 360;
 
-            float newDegree;
-            if (anglePos > 0)
-                newDegree = (-azimuth - (int) anglePos) % 360;
-            if (anglePos < 0 )
-                newDegree = (-azimuth + (int) anglePos) % 360;
 
             RotateAnimation rotateAnimation = new RotateAnimation(
                     currentDegree,
